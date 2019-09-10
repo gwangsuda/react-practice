@@ -1,0 +1,11 @@
+[{
+    "name": "About",
+    "iconType": "info",
+    "url": "/about"
+  },
+  {
+    "name": "Book List",
+    "iconType": "book",
+    "url": "/books"
+  }
+]
