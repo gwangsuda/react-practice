@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "애플리케이션정책 관리",
+    "iconType": "appPolicy",
+    "expanded": true,
+    "subList": [
+      {
+        "id": 11,
+        "name": "요청검사",
+        "dropdownList": [
+          {
+            "id": 111,
+            "name": "접근제어",
+            "url": "/accessControl",
+            "dropdownList": []
+          },
+          {
+            "id": 112,
+            "name": "SQL인젝션",
+            "url": "/sqlInjection",
+            "dropdownList": []
+          },
+          {
+            "id": 113,
+            "name": "WISE요청필터",
+            "url": "/wiseRequestFilter",
+            "dropdownList": [
+              {
+                "id": 1131,
+                "name": "통계",
+                "url": "/statistics",
+                "dropdownList": []
+              },
+              {
+                "id": 1132,
+                "name": "기본설정",
+                "url": "/wiseRequestFilter",
+                "dropdownList": []
+              },
+              {
+                "id": 1133,
+                "name": "고급설정",
+                "url": "/wiseRequestFilter",
+                "dropdownList": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "컨텐트보호",
+        "dropdownList": []
+      },
+      {
+        "id": 13,
+        "name": "위장",
+        "dropdownList": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "사용자 관리",
+    "iconType": "userManagement",
+    "expanded": false,
+    "subList": []
+  },
+  {
+    "id": 3,
+    "name": "일반 관리",
+    "iconType": "management",
+    "expanded": false,
+    "subList": []
+  }
+]

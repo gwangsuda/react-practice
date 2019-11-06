@@ -1,0 +1,11 @@
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+}
+
+.dropdown-item .dropdown-text {
+  position: absolute;
+  margin-left: 15px;
+}

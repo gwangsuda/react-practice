@@ -1,0 +1,14 @@
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 40px;
+  border-bottom: 3px solid #2975BF;
+  background-color: #212121;
+}
+
+.header svg {
+  margin-right: 10px;
+  color: white;
+}

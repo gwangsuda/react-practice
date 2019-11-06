@@ -1,0 +1,23 @@
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 1px;
+  background-color: #121212;
+  width: 200px;
+  cursor: pointer;
+  color: white;
+}
+
+.category-item:hover {
+  color: #6badd3;
+  // opacity: 0.8;
+}
+
+.category-item .category-text {
+  position: absolute;
+  margin-left: 22px;
+  font-size: 12px;
+  font-weight: bold;
+}
