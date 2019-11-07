@@ -1,8 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { TiChevronRight } from 'react-icons/ti';
 import 'assets/scss/SubCategory.scss';
+import React from 'react';
 import DropdownList from './DropdownList';
+import SubCategoryItem from './SubCategoryItem';
 
 const SubMenuList = ({ list }) => {
   if (list.length === 0) {
@@ -14,10 +13,7 @@ const SubMenuList = ({ list }) => {
       <ul className="dropdown">
         {list.map(menu => (
           <li key={menu.id}>
-            <Link>
-              <TiChevronRight />
-              {menu.name}
-            </Link>
+            <SubCategoryItem name={menu.name} />
             {menu.dropdownList.length !== 0 && (
               <DropdownList list={menu.dropdownList} />
             )}

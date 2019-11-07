@@ -3,7 +3,7 @@
     "id": 1,
     "name": "애플리케이션정책 관리",
     "iconType": "appPolicy",
-    "expanded": true,
+    "expanded": false,
     "subList": [
       {
         "id": 11,
