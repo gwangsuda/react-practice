@@ -1,0 +1,18 @@
+@mixin header-icon-style() {
+  font-size: 20px;
+  color: hsla(360, 100%, 100%, 1);
+  padding: 5px;
+  margin-top: 2px;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+    color: hsla(0, 0%, 0%, 1);
+  }
+}
+
+@mixin sidebar-category-icon() {
+  padding: 8px; 
+  font-size: 20px;
+ }

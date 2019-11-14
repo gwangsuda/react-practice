@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  // background-color: hsla(0, 100%, 100%, 1);
+  background-color: hsla(209, 65%, 45%, 1);
+  // background-color: hsla(208, 66%, 37%, 1);
+  border-bottom: solid 1px hsla(0, 0%, 91%, 1);
+  height: 42px;
+  align-items: center;
+}
+
+.header-item {
+  flex: none;
+}
+
+.header-item-gnb {
+  margin-left: auto;
+}
+
+.header-logo {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Helvetica';
+  color: hsla(360, 100%, 100%, 1);
+}
+
+.header-icons {
+  @include header-icon-style();
+}
