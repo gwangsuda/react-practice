@@ -1,0 +1,318 @@
+[
+  {
+    "id": 100,
+    "name": "애플리케이션정책 관리",
+    "iconType": "mdSettingsApplications",
+    "expanded": true,
+    "marked": true,
+    "subcategories": [
+      {
+        "id": 101,
+        "name": "요청검사",
+        "isGroup": true,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 102,
+        "name": "접근제어",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": [
+          {
+            "id": 1021,
+            "name": "통계",
+            "isGroup": false,
+            "iconType": "",
+            "marked": false,
+            "url": "/",
+            "subcategories": []
+          },
+          {
+            "id": 1022,
+            "name": "기본설정",
+            "isGroup": false,
+            "iconType": "",
+            "marked": false,
+            "url": "/",
+            "subcategories": []
+          },
+          {
+            "id": 1023,
+            "name": "고급설정",
+            "isGroup": false,
+            "iconType": "",
+            "marked": false,
+            "url": "/",
+            "subcategories": []
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "name": "검사회피",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 104,
+        "name": "쉘코드",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 105,
+        "name": "요청형식검사",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 106,
+        "name": "쿠키보호",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 107,
+        "name": "웹공격프로그램",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 108,
+        "name": "SQL인젝션",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 109,
+        "name": "XSS",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 110,
+        "name": "인클루드인젝션",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 111,
+        "name": "신용카드정보유입",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 112,
+        "name": "주민등록정보유입",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 113,
+        "name": "다운로드",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 114,
+        "name": "폼필드",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 115,
+        "name": "금칙어",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 116,
+        "name": "업로드",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 117,
+        "name": "POST",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 118,
+        "name": "Slowloris",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 119,
+        "name": "SlowRead",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 120,
+        "name": "과다요청제어",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 121,
+        "name": "WISE요청필터",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 122,
+        "name": "화이트리스트",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 123,
+        "name": "컨텐트보호",
+        "isGroup": true,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 124,
+        "name": "신용카드정보유출",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      },
+      {
+        "id": 125,
+        "name": "신용카드정보유출",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": []
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "방화벽",
+    "iconType": "mdSecurity",
+    "expanded": false,
+    "marked": false,
+    "subcategories": [
+      {
+        "id": 21,
+        "name": "시스템접근",
+        "isGroup": false,
+        "iconType": "",
+        "marked": false,
+        "url": "/",
+        "subcategories": [
+          {
+            "id": 211,
+            "name": "통계",
+            "isGroup": false,
+            "iconType": "",
+            "marked": false,
+            "url": "/",
+            "subcategories": []
+          },
+          {
+            "id": 212,
+            "name": "기본설정",
+            "isGroup": false,
+            "iconType": "",
+            "marked": false,
+            "url": "/",
+            "subcategories": []
+          },
+          {
+            "id": 213,
+            "name": "고급설정",
+            "isGroup": false,
+            "iconType": "",
+            "marked": false,
+            "url": "/",
+            "subcategories": []
+          }
+        ]
+      }
+    ]   
+  },
+  {
+    "id": 3,
+    "name": "사용자 관리",
+    "iconType": "mdSupervisorAccount",
+    "expanded": false,
+    "marked": false,
+    "subcategories": []   
+  }
+]

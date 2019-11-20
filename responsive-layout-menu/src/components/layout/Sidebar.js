@@ -1,20 +1,40 @@
 import React, { useCallback, useState } from 'react';
-import CollpasedSidebar from 'components/layout/sidebar/CollpasedSidebar';
+import CollapsedSidebar from 'components/layout/sidebar/CollapsedSidebar';
 import ExpandedSidebar from 'components/layout/sidebar/ExpandedSidebar';
+import defaultMenus from 'menu.json';
 
 const Sidebar = () => {
-  const [collpase, setCollpase] = useState(true);
+  const [menus, setMenus] = useState(defaultMenus);
+  const [collapse, setCollapse] = useState(true);
 
-  const onToggle = useCallback(() => {
-    setCollpase(!collpase);
-  }, [collpase]);
+  const onToggleSidebar = useCallback(() => {
+    setCollapse(!collapse);
+  }, [collapse]);
+
+  const onToggleCategory = useCallback(id => {
+    setMenus(menus =>
+      menus.map(menu =>
+        menu.id === id
+          ? { ...menu, expanded: !menu.expanded, marked: !menu.marked }
+          : menu,
+      ),
+    );
+  }, []);
 
   return (
     <>
-      {collpase ? (
-        <CollpasedSidebar onToggle={onToggle} />
+      {collapse ? (
+        <CollapsedSidebar
+          menus={menus}
+          onToggleSidebar={onToggleSidebar}
+          onToggleCategory={onToggleCategory}
+        />
       ) : (
-        <ExpandedSidebar onToggle={onToggle} />
+        <ExpandedSidebar
+          menus={menus}
+          onToggleSidebar={onToggleSidebar}
+          onToggleCategory={onToggleCategory}
+        />
       )}
     </>
   );

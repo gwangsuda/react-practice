@@ -1,15 +1,10 @@
 import { CategoryMarker } from 'components/layout/sidebar/Marker';
+import IconSelector from 'components/libs/IconSelector';
 import React from 'react';
-import {
-  MdChevronRight,
-  MdFlip,
-  MdHome,
-  MdSecurity,
-  MdSettingsApplications,
-  MdSupervisorAccount,
-} from 'react-icons/md';
+import { MdFlip, MdChevronRight, MdExpandMore, MdHome } from 'react-icons/md';
+import ExpandedSubCategoryList from './ExpandedSubCategoryList';
 
-const ExpandedSidebar = ({ onToggle }) => {
+const ExpandedSidebar = ({ menus, onToggleSidebar, onToggleCategory }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-home">
@@ -22,26 +17,32 @@ const ExpandedSidebar = ({ onToggle }) => {
           </div>
         </div>
       </div>
-      <div className="sidebar-category-item">
-        <CategoryMarker selected={true} />
-        <MdSettingsApplications className="sidebar-category-icon" />
-        <div className="sidebar-category-text">애플리케이션정책 관리</div>
-        <MdChevronRight className="sidebar-expand-icon" />
+
+      <div className="sidebar-category-container">
+        {menus.map(menu => (
+          <>
+            <div
+              className="sidebar-category-item"
+              onClick={() => onToggleCategory(menu.id)}
+            >
+              <CategoryMarker marked={menu.marked} />
+              <IconSelector iconType={menu.iconType} />
+              <div className="sidebar-category-text">{menu.name}</div>
+              {menu.expanded ? (
+                <MdExpandMore className="sidebar-expand-icon" />
+              ) : (
+                <MdChevronRight className="sidebar-expand-icon" />
+              )}
+            </div>
+            {menu.expanded && (
+              <ExpandedSubCategoryList categories={menu.subcategories} />
+            )}
+          </>
+        ))}
       </div>
-      <div className="sidebar-category-item">
-        <CategoryMarker selected={true} />
-        <MdSecurity className="sidebar-category-icon" />
-        <div className="sidebar-category-text">방화벽</div>
-        <MdChevronRight className="sidebar-expand-icon" />
-      </div>
-      <div className="sidebar-category-item">
-        <CategoryMarker selected={true} />
-        <MdSupervisorAccount className="sidebar-category-icon" />
-        <div className="sidebar-category-text">사용자 관리</div>
-        <MdChevronRight className="sidebar-expand-icon" />
-      </div>
+
       <div className="sidebar-toggle">
-        <div className="sidebar-category-item" onClick={onToggle}>
+        <div className="sidebar-category-item" onClick={onToggleSidebar}>
           <CategoryMarker selected={false} />
           <MdFlip className="sidebar-category-icon" />
           <div className="sidebar-category-text">Toggle Sidebar</div>
