@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import CollapsedSidebar from 'components/layout/sidebar/CollapsedSidebar';
 import ExpandedSidebar from 'components/layout/sidebar/ExpandedSidebar';
+import NewExpandedSidebar from 'components/layout/sidebar/NewExpandedSidebar';
 import defaultMenus from 'menu.json';
 
 const Sidebar = () => {
   const [menus, setMenus] = useState(defaultMenus);
-  const [collapse, setCollapse] = useState(true);
+  const [collapse, setCollapse] = useState(false);
 
   const onToggleSidebar = useCallback(() => {
     setCollapse(!collapse);
@@ -30,7 +31,7 @@ const Sidebar = () => {
           onToggleCategory={onToggleCategory}
         />
       ) : (
-        <ExpandedSidebar
+        <NewExpandedSidebar
           menus={menus}
           onToggleSidebar={onToggleSidebar}
           onToggleCategory={onToggleCategory}

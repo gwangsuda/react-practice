@@ -77,37 +77,64 @@
 
 
 // expandable sidebar
-
-.sidebar-expand-subcategories {
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar-expand-subcategories-dropdown {
+.sidebar-expand-categories {
   padding: 0;
   margin: 0;
   list-style-type: none;
-  width: 200px;
+  overflow-x: none;
+  overflow-y: auto;
 }
 
-.sidebar-expand-subcategories-dropdown li {
+.sidebar-expand-subcategories {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.sidebar-expand-subcategory {
+  position: static;
+
+  .sidebar-expand-dropdown {
+    position: absolute;
+    z-index: 10;
+    display: none; 
+    background-color: hsla(0, 100%, 100%, 1);
+  }
+  &:hover > .sidebar-expand-dropdown {
+    display: block;
+  }
+}
+
+.sidebar-expand-dropdown .wrapper {
   position: relative;
 }
 
-.sidebar-expand-subcategory-item-text {
-  color: hsl(205, 5%, 49%);
-  text-decoration: none; 
-  font-size: 12px; 
-  padding-left: 3px;
-  font-weight: bold;
+.sidebar-expand-dropdown ul {
+  padding: 2px;
+  margin: 0;
+  width: 200px;
+  max-height: 450px;
+  list-style-type: none;
+  
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.sidebar-more-view {
-  color: hsl(204, 7%, 58%);
-  margin-left: auto;
+.sidebar-expand-dropdown li {
+  position: static;
+  
+  .wrapper {
+    position: absolute;
+    z-index: 10;
+    display: none; 
+  }
+  &:hover > .wrapper {
+    display: block;
+  }
 }
 
-.sidebar-expand-subcategories-dropdown .sidebar-subcategory-item {
+
+.sidebar-expand-subcategory-item {
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -116,67 +143,36 @@
     background-color: hsla(223, 78%, 96%, 1);
     color: hsla(212, 90%, 54%, 1);
   }
+
+  .text {
+    color: hsl(205, 5%, 49%);
+    text-decoration: none; 
+    font-size: 11px; 
+    padding-left: 3px;
+    font-weight: bold;
+  }
+  .more {
+    color: hsl(204, 7%, 58%);
+    margin-left: auto;
+  }
+  .group {
+    color: hsl(207, 5%, 43%);
+    text-decoration: none; 
+    font-size: 12px; 
+    font-weight: bold;
+    padding-left: 2px;
+  }
 }
 
-.sidebar-expand-subcategories-dropdown .sidebar-subcategory-item a {
+.sidebar-expand-subcategory-item a {
   color: hsl(205, 5%, 49%);
   text-decoration: none; 
   font-size: 12px; 
   font-family: '맑은 고딕', Verdana, Geneva, Tahoma, sans-serif;
-  // font-weight: bold;
   display: block;
   padding-left: 10px;
-  &:hover {
-    background-color: hsla(223, 78%, 96%, 1);
-    color: hsla(212, 90%, 54%, 1);
-  }
 }
 
-.sidebar-expand-subcategories-dropdown li div ul {
-  position: absolute;
-  top: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: none;
-  line-height: normal;
-  background-color: hsla(0, 100%, 100%, 1);
-  margin-left: 1px;
-}
-
-.sidebar-expand-subcategories-dropdown li div ul li a {
-  text-align: left;
-  color: #cccccc;
-  font-size: 12px;
-  padding: 6px;
-  display: block;
-  white-space: nowrap;
-  min-width: 170px;
-}
-
-.sidebar-expand-subcategories-dropdown li div ul li a:hover {
-  background-color: hsla(223, 78%, 96%, 1);
-    color: hsla(212, 90%, 54%, 1);
-}
-
-.sidebar-expand-subcategories-dropdown li div ul {
-  left: 100%;
-  top: 0;
-}
-
-.sidebar-expand-subcategories-dropdown li div ul li ul {
-  left: 100%;
-  top: 0;
-}
-
-.sidebar-expand-subcategories div ul li:hover>a {
-  background-color: hsla(223, 78%, 96%, 1);
-  color: hsla(212, 90%, 54%, 1);
-}
-
-.sidebar-expand-subcategories  li:hover>div ul {
-  display: block;
-}
 
 
 // collapsed sidebar
