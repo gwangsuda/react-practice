@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react';
 import CollapsedSidebar from 'components/layout/sidebar/CollapsedSidebar';
 import ExpandedSidebar from 'components/layout/sidebar/ExpandedSidebar';
-import NewExpandedSidebar from 'components/layout/sidebar/NewExpandedSidebar';
+import MenuContext from 'contexts/MenuContext';
 import defaultMenus from 'menu.json';
+import React, { useCallback, useReducer, useState } from 'react';
+import menuReducer from 'reducers/menuReducer';
 
 const Sidebar = () => {
   const [menus, setMenus] = useState(defaultMenus);
@@ -22,21 +23,21 @@ const Sidebar = () => {
     );
   }, []);
 
+  const [state, dispatch] = useReducer(menuReducer, defaultMenus);
+
   return (
     <>
-      {collapse ? (
-        <CollapsedSidebar
-          menus={menus}
-          onToggleSidebar={onToggleSidebar}
-          onToggleCategory={onToggleCategory}
-        />
-      ) : (
-        <NewExpandedSidebar
-          menus={menus}
-          onToggleSidebar={onToggleSidebar}
-          onToggleCategory={onToggleCategory}
-        />
-      )}
+      <MenuContext.Provider value={{ state, dispatch }}>
+        {collapse ? (
+          <CollapsedSidebar onToggleSidebar={onToggleSidebar} />
+        ) : (
+          <ExpandedSidebar
+            menus={menus}
+            onToggleSidebar={onToggleSidebar}
+            onToggleCategory={onToggleCategory}
+          />
+        )}
+      </MenuContext.Provider>
     </>
   );
 };

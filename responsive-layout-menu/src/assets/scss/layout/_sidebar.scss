@@ -103,6 +103,10 @@
   &:hover > .sidebar-expand-dropdown {
     display: block;
   }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .sidebar-expand-dropdown .wrapper {
@@ -133,46 +137,35 @@
   }
 }
 
-
 .sidebar-expand-subcategory-item {
   display: flex;
   align-items: center;
   padding-left: 20px;
   height: 29px;
+  color: rgb(88, 93, 99);
+  cursor: pointer;
   &:hover {
     background-color: hsla(223, 78%, 96%, 1);
     color: hsla(212, 90%, 54%, 1);
   }
 
   .text {
-    color: hsl(205, 5%, 49%);
     text-decoration: none; 
     font-size: 11px; 
-    padding-left: 3px;
+    margin-left: 5px;
     font-weight: bold;
   }
   .more {
-    color: hsl(204, 7%, 58%);
     margin-left: auto;
   }
-  .group {
-    color: hsl(207, 5%, 43%);
-    text-decoration: none; 
-    font-size: 12px; 
-    font-weight: bold;
-    padding-left: 2px;
-  }
 }
 
-.sidebar-expand-subcategory-item a {
-  color: hsl(205, 5%, 49%);
-  text-decoration: none; 
+.sidebar-expand-subcategory-item-group {
+  color: rgb(76, 80, 85);
   font-size: 12px; 
-  font-family: '맑은 고딕', Verdana, Geneva, Tahoma, sans-serif;
-  display: block;
-  padding-left: 10px;
+  font-weight: bold;
+  margin-left: 15px;
 }
-
 
 
 // collapsed sidebar
@@ -220,6 +213,10 @@
   &:hover > .wrapper {
     display: block;
   }
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .sidebar-dropdown-item {
@@ -228,7 +225,6 @@
   color: rgb(88, 93, 99);
   background-color: hsla(0, 100%, 100%, 1);
   cursor: pointer;
-  padding-bottom: 1px;
   &:hover {
     background-color: hsla(223, 78%, 96%, 1);
     color: hsla(212, 90%, 54%, 1);

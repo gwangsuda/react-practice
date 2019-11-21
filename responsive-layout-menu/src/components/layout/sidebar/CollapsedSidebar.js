@@ -1,15 +1,15 @@
 import {
-  DropdownCategoryMarker,
   CategoryMarker,
+  DropdownCategoryMarker,
 } from 'components/layout/sidebar/Marker';
-import $ from 'jquery';
-import React, { useEffect } from 'react';
-import { MdHome } from 'react-icons/md';
-import { Link } from 'react-router-dom';
 import IconSelector from 'components/libs/IconSelector';
-import { MdMoreVert, MdFlip } from 'react-icons/md';
+import MenuContext from 'contexts/MenuContext';
+import $ from 'jquery';
+import React, { useContext, useEffect } from 'react';
+import { MdFlip, MdHome, MdMoreVert } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
-const CollapsedSidebar = ({ menus, onToggleSidebar, onToggleCategory }) => {
+const CollapsedSidebar = ({ onToggleSidebar }) => {
   useEffect(() => {
     $('li.parent').on('mouseover', function() {
       const $item = $(this);
@@ -33,6 +33,8 @@ const CollapsedSidebar = ({ menus, onToggleSidebar, onToggleCategory }) => {
     });
   }, []);
 
+  const { state, dispatch } = useContext(MenuContext);
+
   return (
     <div className="sidebar sidebar-collpased">
       {/* home button */}
@@ -45,10 +47,15 @@ const CollapsedSidebar = ({ menus, onToggleSidebar, onToggleCategory }) => {
 
       {/* category buttons */}
       <ul className="sidebar-collapse-categories">
-        {menus.map(menu => (
+        {state.map(menu => (
           <li key={menu.id} className="sidebar-collapse-category">
-            <div className="sidebar-category-item">
-              <CategoryMarker selected={menu.marked} />
+            <div
+              className="sidebar-category-item"
+              onClick={() => {
+                dispatch({ type: 'CATEGORY_TOGGLE', payload: menu.id });
+              }}
+            >
+              <CategoryMarker marked={menu.marked} />
               <IconSelector iconType={menu.iconType} />
             </div>
             {menu.subcategories.length !== 0 && (
@@ -81,14 +88,12 @@ const DropdownList = ({ subcategories }) => {
       <ul>
         {subcategories.map(category =>
           category.subcategories.length !== 0 ? (
-            <>
-              <li className="parent">
-                <DropdownItem category={category} />
-                <DropdownList subcategories={category.subcategories} />
-              </li>
-            </>
+            <li key={category.id} className="parent">
+              <DropdownItem category={category} />
+              <DropdownList subcategories={category.subcategories} />
+            </li>
           ) : (
-            <li>
+            <li key={category.id}>
               {category.isGroup ? (
                 <span className="sidebar-dropdown-item-group">
                   {category.name}
@@ -105,15 +110,16 @@ const DropdownList = ({ subcategories }) => {
 };
 
 const DropdownItem = ({ category }) => {
-  console.log(category.name);
   return (
-    <div className="sidebar-dropdown-item">
-      <DropdownCategoryMarker selected={category.marked} />
-      <span className="text">{category.name}</span>
-      {category.subcategories.length !== 0 && (
-        <MdMoreVert size={13} className="more" />
-      )}
-    </div>
+    <Link to={category.url}>
+      <div className="sidebar-dropdown-item">
+        <DropdownCategoryMarker selected={category.marked} />
+        <span className="text">{category.name}</span>
+        {category.subcategories.length !== 0 && (
+          <MdMoreVert size={13} className="more" />
+        )}
+      </div>
+    </Link>
   );
 };
 

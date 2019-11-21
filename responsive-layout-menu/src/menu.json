@@ -3,8 +3,8 @@
     "id": 100,
     "name": "애플리케이션정책 관리",
     "iconType": "mdSettingsApplications",
-    "expanded": true,
-    "marked": true,
+    "expanded": false,
+    "marked": false,
     "subcategories": [
       {
         "id": 101,
@@ -21,24 +21,15 @@
         "isGroup": false,
         "iconType": "",
         "marked": false,
-        "url": "/",
+        "url": "/accessControl/basic",
         "subcategories": [
-          {
-            "id": 1021,
-            "name": "통계",
-            "isGroup": false,
-            "iconType": "",
-            "marked": false,
-            "url": "/",
-            "subcategories": []
-          },
           {
             "id": 1022,
             "name": "기본설정",
             "isGroup": false,
             "iconType": "",
             "marked": false,
-            "url": "/",
+            "url": "/accessControl/basic",
             "subcategories": []
           },
           {
@@ -47,7 +38,7 @@
             "isGroup": false,
             "iconType": "",
             "marked": false,
-            "url": "/",
+            "url": "/accessControl/advanced",
             "subcategories": []
           }
         ]
