@@ -6,22 +6,11 @@ import React, { useCallback, useReducer, useState } from 'react';
 import menuReducer from 'reducers/menuReducer';
 
 const Sidebar = () => {
-  const [menus, setMenus] = useState(defaultMenus);
-  const [collapse, setCollapse] = useState(false);
+  const [collapse, setCollapse] = useState(true);
 
   const onToggleSidebar = useCallback(() => {
     setCollapse(!collapse);
   }, [collapse]);
-
-  const onToggleCategory = useCallback(id => {
-    setMenus(menus =>
-      menus.map(menu =>
-        menu.id === id
-          ? { ...menu, expanded: !menu.expanded, marked: !menu.marked }
-          : menu,
-      ),
-    );
-  }, []);
 
   const [state, dispatch] = useReducer(menuReducer, defaultMenus);
 
@@ -31,11 +20,7 @@ const Sidebar = () => {
         {collapse ? (
           <CollapsedSidebar onToggleSidebar={onToggleSidebar} />
         ) : (
-          <ExpandedSidebar
-            menus={menus}
-            onToggleSidebar={onToggleSidebar}
-            onToggleCategory={onToggleCategory}
-          />
+          <ExpandedSidebar onToggleSidebar={onToggleSidebar} />
         )}
       </MenuContext.Provider>
     </>

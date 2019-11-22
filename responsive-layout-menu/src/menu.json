@@ -25,6 +25,7 @@
         "subcategories": [
           {
             "id": 1022,
+            "parent": 102,
             "name": "기본설정",
             "isGroup": false,
             "iconType": "",
@@ -34,6 +35,7 @@
           },
           {
             "id": 1023,
+            "parent": 102,
             "name": "고급설정",
             "isGroup": false,
             "iconType": "",

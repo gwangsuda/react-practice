@@ -5,8 +5,7 @@ import {
 } from 'components/layout/sidebar/Marker';
 import IconSelector from 'components/libs/IconSelector';
 import MenuContext from 'contexts/MenuContext';
-import $ from 'jquery';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
   MdChevronRight,
   MdExpandMore,
@@ -18,27 +17,6 @@ import { Link } from 'react-router-dom';
 
 const ExpandedSidebar = ({ onToggleSidebar }) => {
   const { state, dispatch } = useContext(MenuContext);
-
-  useEffect(() => {
-    $('li.parent').on('mouseover', function() {
-      const $item = $(this);
-      const $wrapper = $('> .wrapper', $item);
-      const { top, left } = $item.position();
-      $wrapper.css({
-        top: top,
-        left: left + Math.round($item.outerWidth()),
-      });
-    });
-    $('li.sidebar-expand-subcategory').on('mouseover', function() {
-      const $item = $(this);
-      const $wrapper = $('> .sidebar-expand-dropdown', $item);
-      const { top, left } = $item.position();
-      $wrapper.css({
-        top: top,
-        left: left + Math.round($item.outerWidth()),
-      });
-    });
-  }, [state]);
 
   return (
     <div className="sidebar">
@@ -78,22 +56,30 @@ const ExpandedSubCategoryList = ({ categories }) => {
   return (
     <ul className="sidebar-expand-subcategories">
       {categories.map(category => (
-        <li key={category.id} className="sidebar-expand-subcategory">
-          <ExpandedSubCategoryItem category={category} />
-          {category.subcategories.length !== 0 && (
-            <div className="sidebar-expand-dropdown">
-              <DropdownList subcategories={category.subcategories} />
-            </div>
-          )}
-        </li>
+        <SubCategoryItem category={category} />
       ))}
     </ul>
   );
 };
 
-const ExpandedSubCategoryItem = ({ category }) => {
+const SubCategoryItem = ({ category }) => {
+  const refDropdown = React.createRef();
+
+  const onMouseEnterCategory = e => {
+    e.preventDefault();
+    if (!refDropdown.current) return;
+
+    const { top, width } = e.target.getBoundingClientRect();
+    refDropdown.current.style.top = `${top}px`;
+    refDropdown.current.style.left = `${width}px`;
+  };
+
   return (
-    <>
+    <li
+      key={category.id}
+      className="sidebar-expand-subcategory"
+      onMouseEnter={onMouseEnterCategory}
+    >
       {category.isGroup ? (
         <div className="sidebar-expand-subcategory-item-group">
           {category.name}
@@ -109,7 +95,12 @@ const ExpandedSubCategoryItem = ({ category }) => {
           </div>
         </Link>
       )}
-    </>
+      {category.subcategories.length !== 0 && (
+        <div className="sidebar-expand-dropdown" ref={refDropdown}>
+          <DropdownList subcategories={category.subcategories} />
+        </div>
+      )}
+    </li>
   );
 };
 
