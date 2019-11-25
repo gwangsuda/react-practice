@@ -67,6 +67,7 @@ const SubCategoryItem = ({ category }) => {
 
   const onMouseEnterCategory = e => {
     e.preventDefault();
+
     if (!refDropdown.current) return;
 
     const { top, width } = e.target.getBoundingClientRect();

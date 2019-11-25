@@ -5,35 +5,60 @@ import {
 import IconSelector from 'components/libs/IconSelector';
 import MenuContext from 'contexts/MenuContext';
 import $ from 'jquery';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { MdFlip, MdHome, MdMoreVert } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const CollapsedSidebar = ({ onToggleSidebar }) => {
-  useEffect(() => {
-    $('li.parent').on('mouseover', function() {
-      const $item = $(this);
-      const $wrapper = $('> .wrapper', $item);
-      const { top, left } = $item.position();
-      $wrapper.css({
-        top: top - 3,
-        left: left + Math.round($item.outerWidth()),
-      });
-    });
-
-    $('li.sidebar-collapse-category').on('click', function() {
-      const $item = $(this);
-      const $wrapper = $('> .sidebar-collapse-dropdown', $item);
-      $wrapper.is(':visible') ? $wrapper.hide() : $wrapper.show();
-      const { top } = $item.position();
-      $wrapper.css({
-        top: top,
-        left: 39,
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   $('li.parent').on('mouseover', function() {
+  //     const $item = $(this);
+  //     const $wrapper = $('> .wrapper', $item);
+  //     const { top, left } = $item.position();
+  //     $wrapper.css({
+  //       top: top - 3,
+  //       left: left + Math.round($item.outerWidth()),
+  //     });
+  //   });
+  // }, []);
 
   const { state, dispatch } = useContext(MenuContext);
+
+  const categoryRef = useRef(new Map());
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const onClickCategory = (event, id) => {
+    event.preventDefault();
+
+    const ref = categoryRef.current.get(id);
+
+    if (selectedCategory === id) {
+      ref !== undefined && (ref.style.display = 'none');
+
+      dispatch({ type: 'CATEGORY_TOGGLE', payload: id });
+      setSelectedCategory(null);
+    } else {
+      hideSubCategories();
+
+      const { top } = event.target.getBoundingClientRect();
+
+      if (ref !== undefined) {
+        ref.style.display = 'block';
+        ref.style.top = `${top}px`;
+        ref.style.left = `39px`;
+      }
+
+      dispatch({ type: 'CATEGORY_TOGGLE', payload: selectedCategory });
+      dispatch({ type: 'CATEGORY_TOGGLE', payload: id });
+      setSelectedCategory(id);
+    }
+  };
+
+  const hideSubCategories = () => {
+    categoryRef.current.forEach((value, key) => {
+      value.style.display = 'none';
+    });
+  };
 
   return (
     <div className="sidebar sidebar-collpased">
@@ -51,15 +76,16 @@ const CollapsedSidebar = ({ onToggleSidebar }) => {
           <li key={menu.id} className="sidebar-collapse-category">
             <div
               className="sidebar-category-item"
-              onClick={() => {
-                dispatch({ type: 'CATEGORY_TOGGLE', payload: menu.id });
-              }}
+              onClick={event => onClickCategory(event, menu.id)}
             >
               <CategoryMarker marked={menu.marked} />
               <IconSelector iconType={menu.iconType} />
             </div>
             {menu.subcategories.length !== 0 && (
-              <div className="sidebar-collapse-dropdown">
+              <div
+                className="sidebar-collapse-dropdown"
+                ref={item => categoryRef.current.set(menu.id, item)}
+              >
                 <DropdownList subcategories={menu.subcategories} />
               </div>
             )}
