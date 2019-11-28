@@ -56,7 +56,7 @@ const ExpandedSubCategoryList = ({ categories }) => {
   return (
     <ul className="sidebar-expand-subcategories">
       {categories.map(category => (
-        <SubCategoryItem category={category} />
+        <SubCategoryItem key={category.id} category={category} />
       ))}
     </ul>
   );

@@ -4,24 +4,11 @@ import {
 } from 'components/layout/sidebar/Marker';
 import IconSelector from 'components/libs/IconSelector';
 import MenuContext from 'contexts/MenuContext';
-import $ from 'jquery';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { MdFlip, MdHome, MdMoreVert } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const CollapsedSidebar = ({ onToggleSidebar }) => {
-  // useEffect(() => {
-  //   $('li.parent').on('mouseover', function() {
-  //     const $item = $(this);
-  //     const $wrapper = $('> .wrapper', $item);
-  //     const { top, left } = $item.position();
-  //     $wrapper.css({
-  //       top: top - 3,
-  //       left: left + Math.round($item.outerWidth()),
-  //     });
-  //   });
-  // }, []);
-
   const { state, dispatch } = useContext(MenuContext);
 
   const categoryRef = useRef(new Map());
@@ -29,6 +16,8 @@ const CollapsedSidebar = ({ onToggleSidebar }) => {
 
   const onClickCategory = (event, id) => {
     event.preventDefault();
+
+    console.log(event.target);
 
     const ref = categoryRef.current.get(id);
 
@@ -83,10 +72,10 @@ const CollapsedSidebar = ({ onToggleSidebar }) => {
             </div>
             {menu.subcategories.length !== 0 && (
               <div
-                className="sidebar-collapse-dropdown"
+                className="sidebar-collapse-subcategory"
                 ref={item => categoryRef.current.set(menu.id, item)}
               >
-                <DropdownList subcategories={menu.subcategories} />
+                <SubCategoryList subcategories={menu.subcategories} />
               </div>
             )}
           </li>
@@ -101,6 +90,48 @@ const CollapsedSidebar = ({ onToggleSidebar }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const SubCategoryList = ({ subcategories }) => {
+  return (
+    <ul>
+      {subcategories.map(category =>
+        category.subcategories.length !== 0 ? (
+          <SubCategoryItem key={category.id} category={category} />
+        ) : category.isGroup ? (
+          <li key={category.id}>
+            <span className="sidebar-dropdown-item-group">{category.name}</span>
+          </li>
+        ) : (
+          <li key={category.id}>
+            <DropdownItem category={category} />
+          </li>
+        ),
+      )}
+    </ul>
+  );
+};
+
+const SubCategoryItem = ({ category }) => {
+  const refDropdown = useRef();
+
+  const onMouseEnterCategory = e => {
+    const top = e.target.offsetTop;
+    const width = e.target.offsetWidth;
+    console.log(top, width);
+    // const { top, width } = e.target.getBoundingClientRect();
+    refDropdown.current.style.top = `${top}px`;
+    refDropdown.current.style.left = `${width}px`;
+  };
+
+  return (
+    <li key={category.id} onMouseEnter={onMouseEnterCategory}>
+      <DropdownItem category={category} />
+      <div className="sidebar-collapse-dropdown" ref={refDropdown}>
+        <DropdownList subcategories={category.subcategories} />
+      </div>
+    </li>
   );
 };
 
